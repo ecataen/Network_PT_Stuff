@@ -1,0 +1,38 @@
+Internal/External Network PT Checklist (kinda high level view)
+
+External
+[+] Port Scans (all including TCP and UDP ports)
+[+] Search for any know exploits on all open services
+[+] If you see a web service port open, treat it like a web app attack surface.
+  [-] See the flow of specific service and see if it can be manipulated
+  [-] Search for any login page, file uploads, auth issues, any bypass, LFI/RFI etc.
+
+Internal
+[+] Start with traffic sniffing.
+[+] Gather internal endpoints list, hunt their connections, see for their communications.
+[+] See for ARP tables, map the host list
+[+] Look for plaintext protocols like FTP, Telnet, HTTP, SMTP, SNMP etc.
+[+] Search for SIP traffic, sniff voice traffic for potential creds communications
+[+] Look for other VLANs, vlan tags and host connections/communications
+[+] Look for DTP, STP CDP traffic and try to manipulate STP to get root election
+[+] Execute port scans (all including TCP and UDP ports)
+[+] Search for any know exploits on all open services
+[+] If you see a web service port open, treat it like a web app attack surface.
+  [-] See the flow of specific service and see if it can be manipulated
+  [-] Search for any login page, file uploads, auth issues, any bypass, LFI/RFI etc.
+[+] Start hunting for LM hashes
+[+] Look for protocols like DNS, LDAP, Kerberos etc
+[+] Start the hunt for AD Domain Controllers.
+[+] Look for kerberoasting and potential golden/silver ticketing tactics
+[+] Once inside a box
+  [-] Look for creds and config files 
+  [-] Look for internally running services, ’ps -aux’-ish
+  [-] Look for cron jobs, hunt other user, executables, exposed root level files
+  [-] Look for vertical priv esc, else try horizontal and repeat the above steps
+  [-] Look for critical files (eg: ‘Secret.pdf’ etc.) to show business impact
+  [-] Look for persistence ways, so when you come back tomorrow you can continue etc.
+  [-] Start jumping into other boxes and other subnets etc etc
+
+Important bit: GET a POC everytime you come across ’stuff’, go back home and create a CLEAR REPORT.
+
+Note: Again, this is just a high level view. So please feel free to contribute. :)
